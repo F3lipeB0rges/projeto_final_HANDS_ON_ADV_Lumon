@@ -4,4 +4,4 @@
 
 ### Equipe Lumon
 Participantes: Felipe Rubens de Sousa Borges, Marcos Vinícius Tenacol Coêlho, Thiago
-Thomáz Santana do Nascimento e Yonara Fábila dos Santos Teixeir
+Thomáz Santana do Nascimento e Yonara Fábila dos Santos Teixeira
