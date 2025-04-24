@@ -26,8 +26,8 @@ MPU6050 mpu;
 
 #define SDA_PIN 22
 #define SCL_PIN 23
-#define BUZZER_PIN 25
-#define PIR_PIN 32
+#define BUZZER_PIN 15
+#define PIR_PIN 21
 #define GREEN_PIN 18
 #define RED_PIN 19
 #define DHT_PIN 4
