@@ -141,9 +141,9 @@ void enviarVariaveisAmbiente() {
     String caminho = "/variaveisAmbiente";
     FirebaseJson json;
     json.set("horario", horario);
-    json.set("posicao/x", ax);
-    json.set("posicao/y", ay);
-    json.set("posicao/z", az);
+    json.set("posicao/x", ax/16384.0);
+    json.set("posicao/y", ay/16384.0);
+    json.set("posicao/z", az/16384.0);
     json.set("temperatura", temperatura);
     json.set("umidade", umidade);
     json.set("movimento", movimento);
