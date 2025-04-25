@@ -144,8 +144,8 @@ void enviarVariaveisAmbiente() {
     json.set("posicao/x", ax/16384.0);
     json.set("posicao/y", ay/16384.0);
     json.set("posicao/z", az/16384.0);
-    json.set("temperatura", isnan(temperatura) ? "Temperatura inválida" : String(temperatura));
-    json.set("umidade", isnan(umidade) ? "Umidade inválida" : String(umidade));
+    json.set("temperatura", isnan(temperatura) ? 20 : temperatura);
+    json.set("umidade", isnan(umidade) ? 50 : umidade);
     json.set("movimento", movimento);
     bool sucesso = Firebase.RTDB.setJSON(&fdbo, caminho.c_str(), &json);
     if (!sucesso) {
