@@ -127,7 +127,6 @@ void enviarAlerta(String mensagem) {
     json.set("mensagem", mensagem);
     json.set("horario", horario);
     Firebase.RTDB.setJSON(&fdbo, caminho.c_str(), &json);
-    enviarVariaveisAmbiente();
 }
 
 void enviarVariaveisAmbiente() {
@@ -190,7 +189,7 @@ void setup() {
     Serial.print("X: "); Serial.println(base_ax);
     Serial.print("Y: "); Serial.println(base_ay);
     Serial.print("Z: "); Serial.println(base_az);
-
+    enviarVariaveisAmbiente();
 }
 
 void loop() {
@@ -214,6 +213,7 @@ void loop() {
         digitalWrite(RED_PIN, HIGH);
         tone(BUZZER_PIN, 1000, 200);
         enviarAlerta("Movimento incomum detectado!");
+        enviarVariaveisAmbiente();
     }
     if (millis() - lastMotionTime > 10000) {
         movimentoContador = 0;
@@ -249,15 +249,18 @@ void loop() {
         digitalWrite(RED_PIN, HIGH);
         tone(BUZZER_PIN, 2000, 500);
         enviarAlerta("Movimento excessivo detectado! X=" + String(ax/16384.0) + ",Y=" + String(ay/16384.0) + ",Z=" + String(az/16384.0));
+        enviarVariaveisAmbiente();
     }
 
     float temperatura = dht.readTemperature();
     float umidade = dht.readHumidity();
     if (!isnan(temperatura) && (temperatura < temp_min || temperatura > temp_max)) {
         enviarAlerta("Temperatura fora da faixa aceitável! "+String(temperatura)+" Graus");
+        enviarVariaveisAmbiente();
     }
     if (!isnan(umidade) && (umidade < umidade_min || umidade > umidade_max)) {
         enviarAlerta("Umidade fora da faixa aceitável! "+String(umidade)+" Umidade");
+        enviarVariaveisAmbiente();
     }
     
     if (millis() - ultimoEnvio > intervaloEnvio) {
