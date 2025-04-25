@@ -144,10 +144,14 @@ void enviarVariaveisAmbiente() {
     json.set("posicao/x", ax/16384.0);
     json.set("posicao/y", ay/16384.0);
     json.set("posicao/z", az/16384.0);
-    json.set("temperatura", temperatura);
-    json.set("umidade", umidade);
+    json.set("temperatura", isnan(temperatura) ? "Temperatura inválida" : String(temperatura));
+    json.set("umidade", isnan(umidade) ? "Umidade inválida" : String(umidade));
     json.set("movimento", movimento);
     Firebase.RTDB.setJSON(&fdbo, caminho.c_str(), &json);
+    if (!sucesso) {
+      Serial.println("Falha ao enviar dados:");
+      Serial.println(fdbo.errorReason());
+    }
 }
 
 void setup() {
