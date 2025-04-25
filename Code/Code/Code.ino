@@ -127,6 +127,7 @@ void enviarAlerta(String mensagem) {
     json.set("mensagem", mensagem);
     json.set("horario", horario);
     Firebase.RTDB.setJSON(&fdbo, caminho.c_str(), &json);
+    enviarVariaveisAmbiente();
 }
 
 void enviarVariaveisAmbiente() {
